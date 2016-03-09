@@ -12,11 +12,11 @@ import android.view.MenuItem;
 
 import java.io.IOException;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+    import okhttp3.Call;
+    import okhttp3.Callback;
+    import okhttp3.OkHttpClient;
+    import okhttp3.Request;
+    import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         String apiKey = "b7fa25eb5a4b4cba3416c40d6ce34d43";
-        String urlApi = "https://api.forecast.io/forecast/" +apiKey+ "/37.8267,-122.423";
+        String latitude = "37.8267";
+        String longitude="-122.423";
+        String urlApi = "https://api.forecast.io/forecast/" +apiKey+
+                "/"+latitude+","+longitude+"";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                                 .url(urlApi)
                                 .build();
-
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -44,21 +46,21 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
 
                 try {
-//                    response = call.execute();
                     if(response.isSuccessful()){
                         Log.v(TAG, response.body().string());
+                    }else{
+                        alertUserError();
                     }
                 } catch (IOException e) {
-//            e.printStackTrace();
                     Log.e(TAG,"Exception caught "+e );
-                }
-
+                    }
             }
         });
+    }
 
-
-
-
+    private void alertUserError(){
+        AlertDialogFragment dialogFragment = new AlertDialogFragment();
+        dialogFragment.show(getFragmentManager(),"error_message");
     }
 
 }
