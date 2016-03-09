@@ -1,5 +1,8 @@
 package rohan.com.stormy;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -31,31 +35,47 @@ public class MainActivity extends AppCompatActivity {
         String longitude="-122.423";
         String urlApi = "https://api.forecast.io/forecast/" +apiKey+
                 "/"+latitude+","+longitude+"";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                                .url(urlApi)
-                                .build();
-        Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
+        
+        if (isNetworkAvailable()) {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(urlApi)
+                    .build();
+            Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
 
-            }
+                }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
 
-                try {
-                    if(response.isSuccessful()){
-                        Log.v(TAG, response.body().string());
-                    }else{
-                        alertUserError();
+                    try {
+                        if (response.isSuccessful()) {
+                            Log.v(TAG, response.body().string());
+                        } else {
+                            alertUserError();
+                        }
+                    } catch (IOException e) {
+                        Log.e(TAG, "Exception caught " + e);
                     }
-                } catch (IOException e) {
-                    Log.e(TAG,"Exception caught "+e );
-                    }
-            }
-        });
+                }
+            });
+        }else{
+            Toast.makeText(this, "No network Available",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private boolean isNetworkAvailable() {
+
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        if(networkInfo.isConnected() && networkInfo != null){
+            return true;
+        }
+
+        return false;
     }
 
     private void alertUserError(){
