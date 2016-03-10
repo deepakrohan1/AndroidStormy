@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="#05c5fa"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:id="@+id/textViewTemperature"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="150sp"
+        android:textColor="@android:color/white" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewDegree"
+        android:layout_alignTop="@+id/textViewTemperature"
+        android:layout_toRightOf="@+id/textViewTemperature"
+        android:layout_toEndOf="@+id/textViewTemperature"
+        android:src="@mipmap/degree"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="At 05:34 PM it will be"
+        android:id="@+id/textViewTime"
+        android:textColor="#80ffff"
+        android:textSize="18sp"
+        android:layout_above="@+id/textViewTemperature"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alcratez, CA"
+        android:id="@+id/textViewLocation"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        android:layout_above="@+id/textViewTime"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewIcon"
+        android:layout_alignBottom="@+id/textViewLocation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@mipmap/cloudy"
+        android:layout_marginLeft="20dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTemperature"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HUMIDITY"
+                android:id="@+id/textView"
+                android:textColor="#80ffff"
+                android:textSize="8sp"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.86"
+                android:id="@+id/textViewHumidity"
+                android:textColor="@android:color/white"
+                android:textSize="16dp"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RAIN/SNOW"
+                android:id="@+id/textViewPrecipLabel"
+                android:textColor="#80ffff"
+                android:textSize="8sp"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:id="@+id/textViewPrecipVal"
+                android:textSize="16dp"
+                android:textColor="@android:color/white"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cloudy and chances of Rain"
+        android:id="@+id/textViewSummary"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>
