@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
     import okhttp3.Call;
@@ -23,6 +26,8 @@ import java.io.IOException;
     import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private CurrentWeather currentWeather;
 
     public static final String TAG=MainActivity.class.getSimpleName();
 
@@ -52,12 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 public void onResponse(Call call, Response response) throws IOException {
 
                     try {
+                        String jsonData = response.body().string();
                         if (response.isSuccessful()) {
+                            currentWeather = getCurrentDetails(jsonData);
                             Log.v(TAG, response.body().string());
                         } else {
                             alertUserError();
                         }
                     } catch (IOException e) {
+                        Log.e(TAG, "Exception caught " + e);
+                    } catch (JSONException e) {
                         Log.e(TAG, "Exception caught " + e);
                     }
                 }
@@ -65,6 +74,22 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No network Available",Toast.LENGTH_LONG).show();
         }
+    }
+
+    private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{
+        JSONObject forecast = new JSONObject(jsonData);
+        JSONObject currently = forecast.getJSONObject("currently");
+
+        CurrentWeather currentWeather1 = new CurrentWeather();
+        currentWeather1.setIcon(currently.getString("icon"));
+        currentWeather1.setHumidity(currently.getDouble("humidity"));
+        currentWeather1.setPrecipChance(currently.getDouble("precipProbability"));
+        currentWeather1.setTemperature(currently.getDouble("temperature"));
+        currentWeather1.setSummary(currently.getString("summary"));
+        currentWeather1.setTime(currently.getLong("time"));
+
+//        String name = forecast.getString("timezone");
+        return currentWeather1;
     }
 
     private boolean isNetworkAvailable() {
