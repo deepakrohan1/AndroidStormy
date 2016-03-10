@@ -43,7 +43,7 @@
         android:textSize="24dp"
         android:layout_above="@+id/textViewTime"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="20dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -128,5 +128,23 @@
         android:gravity="center_horizontal"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewRefresh"
+        android:layout_above="@+id/textViewLocation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:src="@mipmap/refresh" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignBottom="@+id/imageViewRefresh"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageViewRefresh"
+        android:layout_alignTop="@+id/imageViewRefresh" />
 
 </RelativeLayout>
