@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100"
+        android:text="--"
         android:id="@+id/textViewTemperature"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="At 05:34 PM it will be"
+        android:text=".."
         android:id="@+id/textViewTime"
         android:textColor="#80ffff"
         android:textSize="18sp"
@@ -83,7 +83,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0.86"
+                android:text="--"
                 android:id="@+id/textViewHumidity"
                 android:textColor="@android:color/white"
                 android:textSize="16dp"
@@ -108,7 +108,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100%"
+                android:text="--"
                 android:id="@+id/textViewPrecipVal"
                 android:textSize="16dp"
                 android:textColor="@android:color/white"
@@ -120,11 +120,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cloudy and chances of Rain"
+        android:text="Loading .."
         android:id="@+id/textViewSummary"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:textColor="@android:color/white"
         android:textSize="18sp" />

@@ -1,6 +1,7 @@
 package rohan.com.stormy;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind (R.id.textViewPrecipVal)TextView textViewPrecipVal;
     @Bind (R.id.textViewSummary)TextView textViewSummary;
     @Bind (R.id.textViewTime)TextView textViewTime;
+    @Bind(R.id.imageViewIcon)ImageView imageViewIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
     private void updateUiForUser() {
 
         textViewTemperature.setText(currentWeather.getTemperature()+"");
+        textViewTime.setText("At " + currentWeather.getFormattedTime() + " it will be");
+        textViewHumidity.setText(currentWeather.getHumidity()+"");
+        textViewPrecipVal.setText(currentWeather.getPrecipChance()+" %");
+        textViewSummary.setText(currentWeather.getSummary());
+        Drawable drawable = getResources().getDrawable(currentWeather.getIconId());
+        imageViewIcon.setImageDrawable(drawable);
+
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{
