@@ -87,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
         currentWeather1.setTemperature(currently.getDouble("temperature"));
         currentWeather1.setSummary(currently.getString("summary"));
         currentWeather1.setTime(currently.getLong("time"));
+        currentWeather1.setTimeZone(forecast.getString("timezone"));
 
-//        String name = forecast.getString("timezone");
+        Log.d(TAG, currentWeather1.getFormattedTime());
+
         return currentWeather1;
     }
 
