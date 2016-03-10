@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -19,7 +20,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-    import okhttp3.Call;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import okhttp3.Call;
     import okhttp3.Callback;
     import okhttp3.OkHttpClient;
     import okhttp3.Request;
@@ -30,11 +33,18 @@ public class MainActivity extends AppCompatActivity {
     private CurrentWeather currentWeather;
 
     public static final String TAG=MainActivity.class.getSimpleName();
+    @Bind (R.id.textViewTemperature)TextView textViewTemperature;
+    @Bind (R.id.textViewHumidity)TextView textViewHumidity;
+    @Bind (R.id.textViewPrecipVal)TextView textViewPrecipVal;
+    @Bind (R.id.textViewSummary)TextView textViewSummary;
+    @Bind (R.id.textViewTime)TextView textViewTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
         String apiKey = "b7fa25eb5a4b4cba3416c40d6ce34d43";
         String latitude = "37.8267";
         String longitude="-122.423";
@@ -60,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
                         String jsonData = response.body().string();
                         if (response.isSuccessful()) {
                             currentWeather = getCurrentDetails(jsonData);
+                            /**
+                             * Run Asynch tasks on UI thread
+                             */
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                  updateUiForUser();
+                                }
+                            });
                             Log.v(TAG, response.body().string());
                         } else {
                             alertUserError();
@@ -74,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "No network Available",Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void updateUiForUser() {
+
+        textViewTemperature.setText(currentWeather.getTemperature()+"");
     }
 
     private CurrentWeather getCurrentDetails(String jsonData) throws JSONException{
