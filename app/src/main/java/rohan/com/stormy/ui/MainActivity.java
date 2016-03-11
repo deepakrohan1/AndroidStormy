@@ -1,6 +1,7 @@
 package rohan.com.stormy.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Forecast forecast;
 
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String DAY_DATA="day_info";
     @Bind(R.id.textViewTemperature) TextView textViewTemperature;
     @Bind(R.id.textViewHumidity) TextView textViewHumidity;
     @Bind(R.id.textViewPrecipVal) TextView textViewPrecipVal;
@@ -236,6 +239,13 @@ public class MainActivity extends AppCompatActivity {
     private void alertUserError() {
         AlertDialogFragment dialogFragment = new AlertDialogFragment();
         dialogFragment.show(getFragmentManager(), "error_message");
+    }
+
+    @OnClick (R.id.buttonWeek)
+    public void onClickWeek(View view){
+        Intent i = new Intent(this, DailyListActivity.class);
+        i.putExtra(DAY_DATA,forecast.getDaysList());
+        startActivity(i);
     }
 
 }

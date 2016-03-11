@@ -1,9 +1,14 @@
 package rohan.com.stormy.model;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Created by rohan on 3/10/16.
  */
-public class Day {
+public class Day implements Serializable{
 
     private String icon;
     private String summary;
@@ -36,8 +41,8 @@ public class Day {
         this.summary = summary;
     }
 
-    public double getMaxTemperature() {
-        return maxTemperature;
+    public int getMaxTemperature() {
+        return (int) Math.round(maxTemperature);
     }
 
     public void setMaxTemperature(double maxTemperature) {
@@ -50,6 +55,18 @@ public class Day {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public int getIconId(){
+        return Forecast.getIconId(getIcon());
+    }
+
+    public String getDayOfWeek(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE");
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(getTimezone()));
+        Date date = new Date(getTime() * 1000);
+        return simpleDateFormat.format(date);
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -163,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:text="HOURLY"
-            android:id="@+id/button"
+            android:id="@+id/buttonHour"
             android:textAlignment="center"
             android:textSize="14sp"
             android:textColor="#FFFFFFFF"
@@ -175,8 +176,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="DAILY"
-            android:id="@+id/button2"
+            android:text="7 DAY"
+            android:id="@+id/buttonWeek"
             android:layout_weight="1"
             android:textSize="14sp"
             android:textColor="#FFFFFFFF"
