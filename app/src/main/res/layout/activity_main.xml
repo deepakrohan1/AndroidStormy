@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#05c5fa"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:background="@drawable/bg_gradient"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewTemperature"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:padding="20dp"
         android:id="@+id/linearLayout">
 
@@ -124,7 +125,7 @@
         android:id="@+id/textViewSummary"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
@@ -146,5 +147,44 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageViewRefresh"
         android:layout_alignTop="@+id/imageViewRefresh" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_below="@+id/textViewSummary"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="HOURLY"
+            android:id="@+id/button"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="#FFFFFFFF"
+            android:background="#40FFFFFF"
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="DAILY"
+            android:id="@+id/button2"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:textColor="#FFFFFFFF"
+            android:background="#40FFFFFF"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="2dp"
+            android:textAlignment="center"
+            android:padding="5dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

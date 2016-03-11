@@ -9,7 +9,7 @@ import rohan.com.stormy.R;
 /**
  * Created by rohan on 3/10/16.
  */
-public class CurrentWeather {
+public class Current {
     private String icon;
     private long time;
     private double temperature;
