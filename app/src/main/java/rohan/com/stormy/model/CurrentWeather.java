@@ -1,8 +1,10 @@
-package rohan.com.stormy;
+package rohan.com.stormy.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+
+import rohan.com.stormy.R;
 
 /**
  * Created by rohan on 3/10/16.

@@ -1,10 +1,12 @@
-package rohan.com.stormy;
+package rohan.com.stormy.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import rohan.com.stormy.R;
 
 /**
  * Created by rohan on 3/9/16.
