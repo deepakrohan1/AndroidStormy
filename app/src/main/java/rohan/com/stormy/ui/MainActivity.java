@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAY_DATA="day_info";
+    public static final String DAY_HOUR="day_hour";
     @Bind(R.id.textViewTemperature) TextView textViewTemperature;
     @Bind(R.id.textViewHumidity) TextView textViewHumidity;
     @Bind(R.id.textViewPrecipVal) TextView textViewPrecipVal;
@@ -245,6 +246,14 @@ public class MainActivity extends AppCompatActivity {
     public void onClickWeek(View view){
         Intent i = new Intent(this, DailyListActivity.class);
         i.putExtra(DAY_DATA,forecast.getDaysList());
+        startActivity(i);
+    }
+
+    @OnClick(R.id.buttonHour)
+    public void onClickHour(View view){
+        Intent i = new Intent(this, HourlyDayActivity.class);
+//        i.putExtra(DAY_HOUR, forecast.getHoursList());
+        i.putParcelableArrayListExtra(DAY_HOUR,forecast.getHoursList());
         startActivity(i);
     }
 

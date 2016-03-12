@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp
+    "
+    tools:background="#2196F3">
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        tools:text = "12 PM"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/textViewTime" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewIcon"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/textViewTime"
+        android:src="@mipmap/clear_day" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTemp"
+        android:layout_alignTop="@+id/textViewTime"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        tools:text="100"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_toEndOf="@+id/imageViewIcon"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:layout_toLeftOf="@+id/textViewTemp"
+        android:layout_centerVertical="true"
+        tools:text="It will be raining all day to"
+        android:layout_toRightOf="@+id/imageViewIcon"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp" />
+</RelativeLayout>

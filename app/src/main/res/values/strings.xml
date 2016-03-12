@@ -6,4 +6,5 @@
     <string name="positive_button_dialog">Ok</string>
     <string name="title_activity_daily_list">DailyListActivity</string>
     <string name="no_data_found">No Data could be loaded..</string>
+    <string name="title_activity_hourly_day">HourlyDayActivity</string>
 </resources>

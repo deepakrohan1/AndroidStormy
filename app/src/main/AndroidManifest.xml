@@ -30,6 +30,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="rohan.com.stormy.ui.MainActivity" />
         </activity>
+        <activity
+            android:name=".ui.HourlyDayActivity"
+            android:label="@string/title_activity_hourly_day"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="rohan.com.stormy.ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
