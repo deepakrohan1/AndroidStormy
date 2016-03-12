@@ -27,7 +27,7 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
     @Override
     public HourViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_hourly_day,parent,false);
+                .inflate(R.layout.adapter_hourly_view,parent,false);
 
         HourViewHolder viewHolder = new HourViewHolder(view);
         return viewHolder;
@@ -56,7 +56,7 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
 
             textViewSummary = (TextView) itemView.findViewById(R.id.textViewSummary);
             textViewTime = (TextView) itemView.findViewById(R.id.textViewTime);
-            textViewTemperature = (TextView) itemView.findViewById(R.id.textViewTemperature);
+            textViewTemperature = (TextView) itemView.findViewById(R.id.textViewTemp);
             imageViewIcon = (ImageView) itemView.findViewById(R.id.imageViewIcon);
         }
 
