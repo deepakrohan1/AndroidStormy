@@ -1,11 +1,14 @@
 package rohan.com.stormy.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,9 +22,11 @@ import rohan.com.stormy.model.Hour;
 public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder> {
 
     ArrayList<Hour> daysList;
+    Context context;
 
-    public HourAdapter(ArrayList<Hour> daysList) {
+    public HourAdapter(Context context,ArrayList<Hour> daysList) {
         this.daysList = daysList;
+        this.context = context;
     }
 
     @Override
@@ -44,7 +49,8 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
         return daysList.size();
     }
 
-    public class HourViewHolder extends RecyclerView.ViewHolder {
+    public class HourViewHolder extends RecyclerView.ViewHolder
+    implements View.OnClickListener{
 
         public TextView textViewTime;
         public TextView textViewSummary;
@@ -58,6 +64,8 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
             textViewTime = (TextView) itemView.findViewById(R.id.textViewTime);
             textViewTemperature = (TextView) itemView.findViewById(R.id.textViewTemp);
             imageViewIcon = (ImageView) itemView.findViewById(R.id.imageViewIcon);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bindHour(Hour hour){
@@ -65,6 +73,15 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
             textViewTime.setText(hour.getFormattedTime());
             textViewTemperature.setText(hour.getTemperature()+"");
             imageViewIcon.setImageResource(hour.getIconId());
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            String time = textViewTime.getText().toString();
+            String summary = textViewSummary.getText().toString();
+            String finalS = String.format("Hey its %s and it will be %s", time,summary);
+            Toast.makeText(context,finalS,Toast.LENGTH_SHORT).show();
 
         }
     }

@@ -34,7 +34,7 @@ public class HourlyDayActivity extends AppCompatActivity {
             hourArrayList = getIntent().getExtras().getParcelableArrayList(MainActivity.DAY_HOUR);
         }
 
-        HourAdapter hourAdapter = new HourAdapter(hourArrayList);
+        HourAdapter hourAdapter = new HourAdapter(this,hourArrayList);
         recyclerView.setAdapter(hourAdapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
