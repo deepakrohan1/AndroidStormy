@@ -60,9 +60,13 @@ public class DayAdapter extends BaseAdapter {
         Day day = daysList.get(position);
         viewHolder.imageViewIcon.setImageResource(day.getIconId());
         viewHolder.textViewTemperature.setText(day.getMaxTemperature()+"");
-        viewHolder.textViewDay.setText(day.getDayOfWeek());
+        if(position == 0){
+            viewHolder.textViewDay.setText("Today");
+        }else {
+            viewHolder.textViewDay.setText(day.getDayOfWeek());
+        }
 
-        return null;
+        return convertView;
     }
 
     public static class ViewHolder{

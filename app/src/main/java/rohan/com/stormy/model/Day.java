@@ -1,5 +1,8 @@
 package rohan.com.stormy.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,7 +11,7 @@ import java.util.TimeZone;
 /**
  * Created by rohan on 3/10/16.
  */
-public class Day implements Serializable{
+public class Day implements Parcelable{
 
     private String icon;
     private String summary;
@@ -16,6 +19,8 @@ public class Day implements Serializable{
     private double maxTemperature;
     private long time;
 
+    public Day() {
+    }
 
     public String getTimezone() {
         return timezone;
@@ -79,4 +84,38 @@ public class Day implements Serializable{
                 ", time=" + time +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(icon);
+        dest.writeString(summary);
+        dest.writeString(timezone);
+        dest.writeLong(time);
+        dest.writeDouble(maxTemperature);
+    }
+
+    private Day(Parcel in){
+        icon = in.readString();
+        summary=in.readString();
+        timezone=in.readString();
+        time=in.readLong();
+        maxTemperature=in.readDouble();
+    }
+
+    public static final Creator<Day> CREATOR = new Creator<Day>() {
+        @Override
+        public Day createFromParcel(Parcel source) {
+            return new Day(source);
+        }
+
+        @Override
+        public Day[] newArray(int size) {
+            return new Day[size];
+        }
+    };
 }

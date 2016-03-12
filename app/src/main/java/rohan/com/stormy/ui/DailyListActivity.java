@@ -25,7 +25,7 @@ public class DailyListActivity extends ListActivity {
         setContentView(R.layout.activity_daily_list);
 
         if(getIntent().getExtras() != null){
-            daysList = (ArrayList<Day>) getIntent().getExtras().getSerializable(MainActivity.DAY_DATA);
+            daysList = getIntent().getExtras().getParcelableArrayList(MainActivity.DAY_DATA);
             Log.d("DailyA", daysList.toString());
 
         }
